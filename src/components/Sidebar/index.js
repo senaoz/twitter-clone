@@ -1,4 +1,4 @@
-import { Button, Stack } from "@mui/material";
+import { Grid, Button, Stack } from "@mui/material";
 import twitter from "../icons/twitter.svg";
 import arrowBottom from "../icons/arrow-bottom.svg";
 import { useState } from "react";
@@ -19,47 +19,61 @@ export default function Sidebar() {
   ];
 
   return (
-    <Stack
-      height={window.innerHeight}
-      justifyContent={"space-between"}
+    <Grid
+      container
+      direction="column"
+      justifyContent="space-between"
+      alignItems="flex-start"
       width={"275px"}
-      paddingRight={5}
+      height={"100vh"}
+      sx={{ overflowY: "auto", flexWrap: "nowrap" }}
+      paddingRight={4}
     >
-      <Stack justifyContent="flex-start" alignItems="flex-start" spacing={1}>
+      <Stack justifyContent="flex-start" alignItems="flex-start" spacing={2}>
         <img
           src={twitter}
           alt={"Twitter"}
           style={{ paddingLeft: "12px", paddingTop: "12px" }}
         />
 
-        {Navigation.map((item) => (
-          <Button
-            variant={selected === item.name ? "contained" : "text"}
-            color={selected === item.name ? "secondary" : "inherit"}
-            key={item.name}
-          >
-            {selected === item.name ? (
+        {Navigation.map((item) =>
+          selected === item.name ? (
+            <Button
+              variant={"text"}
+              color={"inherit"}
+              key={item.name}
+              sx={{ fontWeight: "700" }}
+              onClick={() => setSelected(item.name)}
+            >
               <img
                 src={require(`../icons/${item.icon}-fill.svg`)}
                 alt={" "}
                 className="menu-icons"
                 color="secondary.main"
               />
-            ) : (
+              {item.name}
+            </Button>
+          ) : (
+            <Button
+              variant={"text"}
+              color={"inherit"}
+              key={item.name}
+              onClick={() => setSelected(item.name)}
+            >
               <img
                 src={require(`../icons/${item.icon}.svg`)}
                 alt={" "}
                 className="menu-icons"
               />
-            )}
-            {item.name}
-          </Button>
-        ))}
+              {item.name}
+            </Button>
+          )
+        )}
         <Button variant="tweet" sx={{ width: "200px" }}>
           Tweet
         </Button>
       </Stack>
       <ProfileSettings />
-    </Stack>
+    </Grid>
   );
 }
