@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
 
 export const twitterTheme = createTheme({
+  spacing: 8,
   palette: {
     mode: "dark",
     primary: {
@@ -26,8 +27,14 @@ export const twitterTheme = createTheme({
     divider: "#2F3336",
   },
   typography: {
-    fontFamily: "Roboto",
-    fontSize: 13,
+    fontFamily: "-apple-system, Roboto, sans-serif",
+    caption: {
+      fontSize: 13,
+    },
+    subtitle1: {
+      fontSize: 19,
+      fontWeight: 800,
+    },
     body1: {
       fontSize: 15,
       fontWeight: 700,
@@ -75,24 +82,34 @@ export const twitterTheme = createTheme({
         },
       },
     },
+    MuiStack: {
+      styleOverrides: {
+        root: {
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          spacing: 1,
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
           borderRadius: 50,
-          padding: "6px 12px",
+          padding: "6px 18px 6px 12px",
           textTransform: "none",
+          justifyContent: "flex-start",
         },
       },
-
       variants: [
         {
           props: { variant: "tweet" },
           style: {
+            justifyContent: "center",
             fontSize: 15,
             fontWeight: 700,
             borderRadius: 50,
             background: "#1DA1F2",
-            width: 80,
+            width: "100%",
             height: 40,
           },
         },

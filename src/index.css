@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200..900");
 
 body {
-  margin: 0;
-  font-family: "Roboto", "Oxygen", -apple-system, "Ubuntu", "Cantarell",
+  margin: 0px ;
+  font-family: -apple-system, "Roboto", "Oxygen",  "Ubuntu", "Cantarell",
   "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,4 +10,28 @@ body {
 
 .menu-icons {
   padding-right: 20px;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  background: #15181C;
+  padding: 15px;
+  border-radius: 50px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+}
+
+.search-box input{
+  width: 100%;
+  color: white;
+  margin: 0px 10px;
+  background: transparent;
+  border: none;
+}
+
+
+textarea:focus, input:focus{
+  outline: none;
 }

@@ -1,13 +1,18 @@
-import logo from './logo.svg';
-import home from './components/icons/home.svg';
-import Navigation from "./components/Navigation";
+import { Container } from "@mui/material";
+import Sidebar from "./components/Sidebar";
+import Trends from "./components/Trends";
+import Timeline from "./components/Timeline";
 
 function App() {
   return (
-    <div >
-
-        <Navigation />
-    </div>
+    <Container
+      maxWidth="xl"
+      sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
+    >
+      <Sidebar />
+      <Timeline />
+      <Trends />
+    </Container>
   );
 }
 
