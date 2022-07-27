@@ -45,13 +45,28 @@ export const twitterTheme = createTheme({
     },
     button: {
       fontSize: 19,
-      fontWeight: 700,
+      fontWeight: 400,
     },
   },
   shape: {
     borderRadius: undefined,
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          background: "black",
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
+
     MuiAvatar: {
       styleOverrides: {
         root: {
