@@ -24,6 +24,8 @@ export const twitterTheme = createTheme({
       default: "#000000",
       paper: "#15181C",
     },
+    retweet: "#00BA7CFF",
+    like: "rgba(249, 24, 128)",
     divider: "#2F3336",
   },
   typography: {
@@ -59,6 +61,17 @@ export const twitterTheme = createTheme({
         },
       },
     },
+
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            background: "rgba(29,161,242,0.2)",
+          },
+        },
+      },
+    },
+
     MuiListItem: {
       styleOverrides: {
         root: {
@@ -75,6 +88,7 @@ export const twitterTheme = createTheme({
         },
       },
     },
+
     MuiBadge: {
       styleOverrides: {
         root: {
@@ -82,21 +96,45 @@ export const twitterTheme = createTheme({
         },
       },
     },
+
     MuiCardMedia: {
       styleOverrides: {
         root: {
           borderRadius: 10,
+          marginTop: "14px",
+          marginBottom: "8px",
+          border: "1px solid #2F3336",
         },
       },
     },
+
     MuiCard: {
       styleOverrides: {
         root: {
           maxWidth: 600,
           width: "100%",
+          background: "transparent",
+          padding: "16px",
         },
       },
     },
+
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: "0px !important",
+        },
+      },
+    },
+
+    MuiCardActions: {
+      styleOverrides: {
+        root: {
+          padding: "0px",
+        },
+      },
+    },
+
     MuiStack: {
       styleOverrides: {
         root: {
@@ -110,9 +148,9 @@ export const twitterTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 50,
-          padding: "6px 18px 6px 12px",
           textTransform: "none",
           justifyContent: "flex-start",
+          minWidth: "31px",
         },
       },
       variants: [

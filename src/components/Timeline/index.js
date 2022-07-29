@@ -1,20 +1,20 @@
 import { AppBar, Stack, Typography } from "@mui/material";
 import timelineProp from "../icons/timeline-prop.svg";
 import { useState } from "react";
+import Tweet from "./tweet";
 
 export default function Timeline() {
-  const [tweets, setTweets] = useState({
-    1: {
-      id: 1, //nanoid is used to generate unique id
-      user: "@user1",
-      text: "This is a tweet",
-      likes: 10,
-      retweets: 5,
-      comments: 3,
-      time: "1 hour ago",
-    },
-    2: {},
-  });
+  const [tweet, setTweet] = useState();
+  const tweetList = [];
+
+  for (var key in localStorage) {
+    if (key.includes("tweet")) {
+      tweetList.push(JSON.parse(localStorage.getItem(key)));
+    }
+  }
+
+  console.log(tweetList);
+
   return (
     <Stack
       width={"600px"}
@@ -33,10 +33,11 @@ export default function Timeline() {
           padding: 2,
         }}
       >
-        <Typography variant="subtitle1">Latest Tweets</Typography>
+        <Typography variant="subtitle1">Home</Typography>
         <img src={timelineProp} width="24px" />
       </AppBar>
-      <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}>Selamlar!</Stack>
+      <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}></Stack>
+      <Tweet tweet={tweetList[0]} />
     </Stack>
   );
 }

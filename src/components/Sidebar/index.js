@@ -42,7 +42,7 @@ export default function Sidebar() {
               variant={"text"}
               color={"inherit"}
               key={item.name}
-              sx={{ fontWeight: "700" }}
+              sx={{ fontWeight: "700", padding: "6px 18px 6px 12px" }}
               onClick={() => setSelected(item.name)}
             >
               <img
@@ -50,6 +50,7 @@ export default function Sidebar() {
                 alt={" "}
                 className="menu-icons"
                 color="secondary.main"
+                style={{ marginRight: "20px" }}
               />
               {item.name}
             </Button>
@@ -58,11 +59,13 @@ export default function Sidebar() {
               variant={"text"}
               color={"inherit"}
               key={item.name}
+              sx={{ padding: "6px 18px 6px 12px" }}
               onClick={() => setSelected(item.name)}
             >
               <img
                 src={require(`../icons/${item.icon}.svg`)}
                 alt={" "}
+                style={{ marginRight: "20px" }}
                 className="menu-icons"
               />
               {item.name}

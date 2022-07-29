@@ -18,7 +18,6 @@ export default function Trends() {
     { location: "Turkey", subject: "Besiktas", number: 27076 },
     { location: "Turkey", subject: "Trabzonspor", number: 25023 },
     { location: "Turkey", subject: "Goztepe", number: 15027 },
-    { location: "Turkey", subject: "Adanaspor", number: 12013 },
   ];
 
   return (

@@ -6,11 +6,52 @@ body {
   "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  fill: #FFFFFF;
 }
 
-.menu-icons {
-  padding-right: 20px;
+
+.menu-icons:hover {
+  color: #1DA1F2;
 }
+
+.menu-icons:hover svg {
+  fill: #1DA1F2;
+}
+
+.menu-icons span {
+  padding-left: 4px;
+}
+
+.menu-icons:hover button {
+  background: rgba(29,161,242,0.2);
+}
+
+.retweet:hover  {
+  color: #00BA7CFF;
+}
+
+.retweet:hover  svg {
+  fill: #00BA7CFF;
+}
+
+.retweet:hover button {
+  background: rgba(0, 186, 124, 0.2);
+}
+
+.like:hover  {
+  color: rgba(249, 24, 128);
+}
+
+.like:hover  svg {
+  fill: rgba(249, 24, 128);
+}
+
+.like:hover button {
+  background: rgba(249, 24, 128, 0.2);
+}
+
+
+
 
 .search-box {
   width: 100%;
