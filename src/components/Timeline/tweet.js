@@ -62,14 +62,3 @@ export default function Tweet(props) {
     </Card>
   );
 }
-
-/*
-
-like_count={tweet.like_count}
-          reply_count={tweet.reply_count}
-          retweet_count={tweet.retweet_count}
-          favorited={tweet.favorited}
-          retweeted={tweet.retweeted}
-          liked={tweet.liked}
-
-*/

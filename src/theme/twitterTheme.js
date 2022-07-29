@@ -37,6 +37,10 @@ export const twitterTheme = createTheme({
       fontSize: 19,
       fontWeight: 800,
     },
+    subtitle2: {
+      fontSize: 19,
+      fontWeight: 500,
+    },
     body1: {
       fontSize: 15,
       fontWeight: 700,
@@ -168,7 +172,17 @@ export const twitterTheme = createTheme({
         },
       ],
     },
-    MuiTextField: {
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          fontSize: 19,
+          border: "1px solid #00000",
+          fontWeight: 500,
+          padding: "0px",
+          margin: "0px",
+          outline: "#00000",
+        },
+      },
       variants: [
         {
           props: { variant: "search" },

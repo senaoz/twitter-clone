@@ -2,6 +2,7 @@ import { AppBar, Stack, Typography } from "@mui/material";
 import timelineProp from "../icons/timeline-prop.svg";
 import { useState } from "react";
 import Tweet from "./tweet";
+import TweetEditor from "./tweetEditor";
 
 export default function Timeline() {
   const [tweet, setTweet] = useState();
@@ -36,7 +37,9 @@ export default function Timeline() {
         <Typography variant="subtitle1">Home</Typography>
         <img src={timelineProp} width="24px" />
       </AppBar>
-      <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}></Stack>
+      <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}>
+        <TweetEditor />
+      </Stack>
       <Tweet tweet={tweetList[0]} />
     </Stack>
   );

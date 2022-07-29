@@ -50,7 +50,13 @@ body {
   background: rgba(249, 24, 128, 0.2);
 }
 
-
+.tweet-text-field {
+  border: none !important;
+  outline: none;
+  font-size: 19px;
+  color: #FFFFFF;
+  margin: 0px;
+}
 
 
 .search-box {
@@ -79,5 +85,16 @@ textarea:focus, input:focus{
 
 a {
   text-decoration: none;
+
+}
+
+
+.css-oqmn2h-MuiInputBase-input-MuiOutlinedInput-input {
+    border: none !important;
+    font-size: 19px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: none !important;
+
 
 }
