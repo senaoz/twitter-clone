@@ -6,9 +6,9 @@ import EmojiIcon from "../icons/emoji.svg";
 import { useEffect, useRef, useState } from "react";
 import { MediaIcon } from "../icons/icons";
 
-export default function TweetEditor() {
+export default function TweetEditor(props) {
   const [text, setText] = useState("");
-
+  const theLength = props.length;
   const [fileDataURL, setFileDataURL] = useState(null);
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);
@@ -58,7 +58,7 @@ export default function TweetEditor() {
         `tweet-${id}`,
         JSON.stringify({
           str_id: `${id}`,
-          created_at: new Date(),
+          created_at: new Date().toUTCString(),
           text: `${text}`,
           user: {
             user_id: 100001,

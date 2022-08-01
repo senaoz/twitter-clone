@@ -37,7 +37,7 @@ export default function Timeline() {
         <img src={timelineProp} width="24px" alt={"timelineProp"} />
       </AppBar>
       <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}>
-        <TweetEditor />
+        <TweetEditor length={tweetList.length} />
       </Stack>
       {tweetList
         .slice(0)
