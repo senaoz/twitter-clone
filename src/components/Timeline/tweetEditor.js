@@ -51,39 +51,41 @@ export default function TweetEditor() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const id = nanoid();
+    if (text.length > 0) {
+      const id = nanoid();
 
-    localStorage.setItem(
-      `tweet-${id}`,
-      JSON.stringify({
-        str_id: `${id}`,
-        created_at: new Date(),
-        text: `${text}`,
-        user: {
-          user_id: 100001,
-          name: "My Account",
-          profile_image_url:
-            "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png",
-          username: "demoAccount",
-        },
-        reply_count: 0,
-        retweet_count: 0,
-        like_count: 0,
-        retweeted: false,
-        liked: false,
-        entities: {
-          hashtags: [],
-          user_mentions: [],
-          urls: [],
-          media: [fileDataURL],
-        },
-      })
-    );
+      localStorage.setItem(
+        `tweet-${id}`,
+        JSON.stringify({
+          str_id: `${id}`,
+          created_at: new Date(),
+          text: `${text}`,
+          user: {
+            user_id: 100001,
+            name: "My Account",
+            profile_image_url:
+              "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png",
+            username: "demoAccount",
+          },
+          reply_count: 0,
+          retweet_count: 0,
+          like_count: 0,
+          retweeted: false,
+          liked: false,
+          entities: {
+            hashtags: [],
+            user_mentions: [],
+            urls: [],
+            media: [fileDataURL],
+          },
+        })
+      );
 
-    setText("");
-    setFile(null);
-    setFileDataURL(null);
-    window.location.reload();
+      setText("");
+      setFile(null);
+      setFileDataURL(null);
+      window.location.reload();
+    } else alert("Please enter some text");
   }
 
   return (
