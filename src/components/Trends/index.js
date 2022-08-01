@@ -13,11 +13,11 @@ export default function Trends() {
     { location: "Turkey", subject: "Trabzonspor", number: 250123 },
     { location: "Turkey", subject: "Goztepe", number: 150276 },
     { location: "Turkey", subject: "Adanaspor", number: 120123 },
-    { location: "Turkey", subject: "Galatasaray", number: 33567 },
-    { location: "Turkey", subject: "Fenerbahce", number: 30567 },
-    { location: "Turkey", subject: "Besiktas", number: 27076 },
-    { location: "Turkey", subject: "Trabzonspor", number: 25023 },
-    { location: "Turkey", subject: "Goztepe", number: 15027 },
+    { location: "Turkey", subject: "Bursaspor", number: 33567 },
+    { location: "Turkey", subject: "Fenerbahce2", number: 30567 },
+    { location: "Turkey", subject: "Besiktas2", number: 27076 },
+    { location: "Turkey", subject: "Trabzonspor2", number: 25023 },
+    { location: "Turkey", subject: "Goztepe2", number: 15027 },
   ];
 
   return (
