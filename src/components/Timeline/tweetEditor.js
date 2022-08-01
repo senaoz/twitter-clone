@@ -63,7 +63,7 @@ export default function TweetEditor() {
           user_id: 100001,
           name: "My Account",
           profile_image_url:
-            "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+            "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png",
           username: "demoAccount",
         },
         reply_count: 0,
@@ -96,7 +96,12 @@ export default function TweetEditor() {
           display: "flex",
         }}
       >
-        <Avatar sx={{ marginRight: 1, width: "48px", height: "48px" }} />
+        <Avatar
+          sx={{ marginRight: 1, width: "48px", height: "48px" }}
+          src={
+            "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png"
+          }
+        />
 
         <form
           style={{ width: "100%", maxHeight: "600px" }}
