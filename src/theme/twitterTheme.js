@@ -100,7 +100,14 @@ export const twitterTheme = createTheme({
         },
       },
     },
-
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          border: "none",
+          outline: "none",
+        },
+      },
+    },
     MuiCardMedia: {
       styleOverrides: {
         root: {
@@ -172,7 +179,7 @@ export const twitterTheme = createTheme({
         },
       ],
     },
-    MuiInput: {
+    MuiInputBase: {
       styleOverrides: {
         root: {
           fontSize: 19,
@@ -180,7 +187,19 @@ export const twitterTheme = createTheme({
           fontWeight: 500,
           padding: "0px",
           margin: "0px",
-          outline: "#00000",
+          outline: "solid ",
+          outlineColor: "rgba(0,0,0,0)",
+        },
+      },
+    },
+
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          padding: "0px",
+          margin: "0px",
+          outline: "solid ",
+          outlineColor: "rgba(0,0,0,0)",
         },
       },
       variants: [

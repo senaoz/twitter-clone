@@ -11,13 +11,13 @@ export default function ProfileSettings() {
         justifyContent: "space-between",
         marginBottom: "12px",
       }}
-      endIcon={<img src={arrowBottom} />}
+      endIcon={<img src={arrowBottom} alt={"arrowBottom"} />}
     >
       <Stack direction="row" alignItems="center">
         <Avatar />
         <Stack marginX={1}>
-          <Typography variant="body1">Sena</Typography>
-          <Typography variant="body2">@zsena0z</Typography>
+          <Typography variant="body1">My Account</Typography>
+          <Typography variant="body2">@demoAccount</Typography>
         </Stack>
       </Stack>
     </Button>

@@ -1,11 +1,9 @@
-import { AppBar, Stack, Typography } from "@mui/material";
+import { AppBar, Stack, Typography, Box } from "@mui/material";
 import timelineProp from "../icons/timeline-prop.svg";
-import { useState } from "react";
 import Tweet from "./tweet";
 import TweetEditor from "./tweetEditor";
 
 export default function Timeline() {
-  const [tweet, setTweet] = useState();
   const tweetList = [];
 
   for (var key in localStorage) {
@@ -17,12 +15,13 @@ export default function Timeline() {
   console.log(tweetList);
 
   return (
-    <Stack
+    <Box
       width={"600px"}
       borderRight={1}
       borderLeft={1}
       borderColor={"divider"}
       height={"100vh"}
+      sx={{ overflowY: "auto", flexWrap: "nowrap" }}
     >
       <AppBar
         position="sticky"
@@ -35,12 +34,17 @@ export default function Timeline() {
         }}
       >
         <Typography variant="subtitle1">Home</Typography>
-        <img src={timelineProp} width="24px" />
+        <img src={timelineProp} width="24px" alt={"timelineProp"} />
       </AppBar>
       <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}>
         <TweetEditor />
       </Stack>
-      <Tweet tweet={tweetList[0]} />
-    </Stack>
+      {tweetList
+        .slice(0)
+        .reverse()
+        .map((tweet, index) => (
+          <Tweet key={index} tweet={tweet} />
+        ))}
+    </Box>
   );
 }

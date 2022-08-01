@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function TweetActions(props) {
   const { id } = props;
 
-  const tweet = JSON.parse(localStorage.getItem(`tweet${id}`));
+  const tweet = JSON.parse(localStorage.getItem(`tweet-${id}`));
 
   const { liked, retweeted, like_count, reply_count, retweet_count } = tweet;
 
@@ -22,7 +22,7 @@ export default function TweetActions(props) {
     setLikeState(!liked);
     setLikeCountState(liked ? like_count - 1 : like_count + 1);
     tweet.like_count = liked ? like_count - 1 : like_count + 1;
-    localStorage.setItem(`tweet${id}`, JSON.stringify(tweet));
+    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
   };
 
   const handleRetweet = () => {
@@ -30,13 +30,13 @@ export default function TweetActions(props) {
     setRetweetState(!retweeted);
     setRetweetCountState(retweeted ? retweet_count - 1 : retweet_count + 1);
     tweet.retweet_count = retweeted ? retweet_count - 1 : retweet_count + 1;
-    localStorage.setItem(`tweet${id}`, JSON.stringify(tweet));
+    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
   };
 
   const handleReply = () => {
     setReplyCountState(reply_count + 1);
     tweet.reply_count = reply_count + 1;
-    localStorage.setItem(`tweet${id}`, JSON.stringify(tweet));
+    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
   };
 
   return (
@@ -52,7 +52,7 @@ export default function TweetActions(props) {
         >
           <ReplyIcon width="20" />
         </IconButton>
-        <Typography variant="caption">{reply_count}</Typography>
+        <Typography variant="caption">{replyCountState}</Typography>
       </Box>
       <Box className="menu-icons retweet">
         <IconButton

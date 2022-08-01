@@ -1,8 +1,8 @@
-import { Avatar, Box, Card, Typography, IconButton } from "@mui/material";
+import { Avatar, Box, Card, Typography } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import TweetActions from "./tweetActions";
-import { EditDots } from "../icons/icons";
+import TweetEditMenu from "./tweetEditMenu";
 
 export default function Tweet(props) {
   const tweet = props.tweet;
@@ -35,17 +35,13 @@ export default function Tweet(props) {
             </Typography>
           </Typography>
 
-          <IconButton
-            aria-label="EditButton"
-            className="menu-icons"
-            sx={{ margin: "-8px" }}
-          >
-            <EditDots width="20" fill="#6E767D" />
-          </IconButton>
+          {tweet.user.username === "demoAccount" ? (
+            <TweetEditMenu tweet={tweet} />
+          ) : null}
         </Box>
         <Typography variant="body2">{tweet.text}</Typography>
 
-        {tweet.entities.media.length > 0
+        {tweet.entities.media.length > 0 && tweet.entities.media[0] != null
           ? tweet.entities.media.map((item, index) => (
               <CardMedia
                 key={index}

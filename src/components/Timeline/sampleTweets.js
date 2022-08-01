@@ -1,8 +1,10 @@
 export default function sampleTweets() {
+  const utcDate1 = new Date(Date.UTC(2017, 1, 2, 3, 4, 5));
+
   const tweets = [
     {
       str_id: "1000",
-      created_at: "Thu Apr 06 15:24:15 +0000 2017",
+      created_at: utcDate1.toUTCString(),
       text: "1- Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps://t.co/XweGngmxlP",
       user: {
         user_id: 2244994945,
@@ -28,6 +30,9 @@ export default function sampleTweets() {
   ];
 
   for (let i = 0; i < tweets.length; i++) {
-    localStorage.setItem(`tweet${tweets[i].str_id}`, JSON.stringify(tweets[i]));
+    localStorage.setItem(
+      `tweet-${tweets[i].str_id}`,
+      JSON.stringify(tweets[i])
+    );
   }
 }
