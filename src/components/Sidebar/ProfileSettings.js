@@ -12,7 +12,7 @@ export default function ProfileSettings(props) {
         minWidth: "0",
         justifyContent: "space-between",
         marginBottom: "12px",
-        padding: mobile ? "0px" : " ",
+        padding: mobile ? "10px 0 0 0 " : " ",
       }}
       endIcon={mobile ? null : <img src={arrowBottom} alt={"arrowBottom"} />}
     >
