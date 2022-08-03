@@ -12,7 +12,7 @@ export default function Tweet(props) {
       sx={{
         borderBottom: 1,
         borderColor: "divider",
-        width: "600px",
+
         display: "flex",
       }}
     >

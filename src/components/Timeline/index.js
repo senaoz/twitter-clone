@@ -16,7 +16,7 @@ export default function Timeline() {
 
   return (
     <Box
-      width={"600px"}
+      maxWidth={"600px"}
       borderRight={1}
       borderLeft={1}
       borderColor={"divider"}

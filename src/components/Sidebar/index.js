@@ -1,10 +1,13 @@
-import { Grid, Button, Stack } from "@mui/material";
+import { Grid, Button, Stack, SvgIcon } from "@mui/material";
 import twitter from "../icons/twitter.svg";
-import arrowBottom from "../icons/arrow-bottom.svg";
+
 import { useState } from "react";
 import ProfileSettings from "./ProfileSettings";
+import tweet from "../icons/tweet.svg";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+  let mobile = props.mobile;
+
   const [selected, setSelected] = useState("Home");
 
   const Navigation = [
@@ -24,10 +27,11 @@ export default function Sidebar() {
       direction="column"
       justifyContent="space-between"
       alignItems="flex-start"
-      width={"275px"}
+      width={mobile ? "auto" : "275px"}
+      minWidth={"65px"}
       height={"100vh"}
-      sx={{ overflowY: "auto", flexWrap: "nowrap" }}
-      paddingRight={4}
+      sx={{ overflowY: "auto", flexWrap: "nowrap", padding: "10px" }}
+      paddingRight={mobile ? 0 : 4}
     >
       <Stack justifyContent="flex-start" alignItems="flex-start" spacing={2}>
         <img
@@ -42,7 +46,10 @@ export default function Sidebar() {
               variant={"text"}
               color={"inherit"}
               key={item.name}
-              sx={{ fontWeight: "700", padding: "6px 18px 6px 12px" }}
+              sx={{
+                fontWeight: "700",
+                padding: mobile ? "10px" : "6px 18px 6px 12px",
+              }}
               onClick={() => setSelected(item.name)}
             >
               <img
@@ -50,33 +57,39 @@ export default function Sidebar() {
                 alt={" "}
                 className="menu-icons"
                 color="secondary.main"
-                style={{ marginRight: "20px" }}
+                style={{ marginRight: mobile ? "0px" : "20px" }}
               />
-              {item.name}
+              {mobile ? null : item.name}
             </Button>
           ) : (
             <Button
               variant={"text"}
               color={"inherit"}
               key={item.name}
-              sx={{ padding: "6px 18px 6px 12px" }}
+              sx={{ padding: mobile ? "10px" : "6px 18px 6px 12px" }}
               onClick={() => setSelected(item.name)}
             >
               <img
                 src={require(`../icons/${item.icon}.svg`)}
                 alt={" "}
-                style={{ marginRight: "20px" }}
+                style={{ marginRight: mobile ? "0px" : "20px" }}
                 className="menu-icons"
               />
-              {item.name}
+              {mobile ? null : item.name}
             </Button>
           )
         )}
-        <Button variant="tweet" sx={{ width: "200px" }}>
-          Tweet
-        </Button>
+        {mobile ? (
+          <Button variant="tweet" sx={{ padding: 0 }}>
+            <img src={tweet} alt={"Tweet"} />
+          </Button>
+        ) : (
+          <Button variant="tweet" sx={{ width: "200px" }}>
+            Tweet
+          </Button>
+        )}
       </Stack>
-      <ProfileSettings />
+      <ProfileSettings mobile={mobile} />
     </Grid>
   );
 }

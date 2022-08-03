@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-export const twitterTheme = createTheme({
+export const TwitterThemeDark = createTheme({
   spacing: 8,
   palette: {
     mode: "dark",
