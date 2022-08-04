@@ -1,36 +1,16 @@
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Container,
-} from "@mui/material";
-import twitter from "./components/icons/twitter.svg";
+import { Container, useMediaQuery } from "@mui/material";
 import Sidebar from "./components/Sidebar";
 import Trends from "./components/Trends";
 import Timeline from "./components/Timeline";
 import sampleTweets from "./components/Timeline/sampleTweets";
-import { useEffect, useState } from "react";
 
 function App() {
   const tweetList = [];
-  let mobile = window.innerWidth < 1350;
 
   if (tweetList.length < 2) sampleTweets();
 
-  for (var key in localStorage) {
-    if (key.includes("tweet")) {
-      tweetList.push(JSON.parse(localStorage.getItem(key)));
-    }
-  }
-
-  window.addEventListener("resize", () => {
-    mobile = window.innerWidth < 1350;
-    window.location.reload();
-  });
-
-  const [value, setValue] = useState("recents");
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const mobile = useMediaQuery("(max-width:1350px)");
+  console.log(mobile);
 
   return (
     <Container
@@ -42,7 +22,7 @@ function App() {
       }}
       style={{ padding: 0 }}
     >
-      <Sidebar mobile={mobile} />
+      <Sidebar />
       <Timeline />
       {mobile ? null : <Trends />}
     </Container>

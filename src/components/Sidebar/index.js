@@ -1,12 +1,12 @@
-import { Grid, Button, Stack, SvgIcon } from "@mui/material";
+import { Grid, Button, Stack, SvgIcon, useMediaQuery } from "@mui/material";
 import twitter from "../icons/twitter.svg";
 
 import { useState } from "react";
 import ProfileSettings from "./ProfileSettings";
 import tweet from "../icons/tweet.svg";
 
-export default function Sidebar(props) {
-  let mobile = props.mobile;
+export default function Sidebar() {
+  const mobile = useMediaQuery("(max-width:1350px)");
 
   const [selected, setSelected] = useState("Home");
 
@@ -27,11 +27,14 @@ export default function Sidebar(props) {
       direction="column"
       justifyContent="space-between"
       alignItems="flex-start"
-      width={mobile ? "auto" : "275px"}
       minWidth={"65px"}
       height={"100vh"}
-      sx={{ overflowY: "auto", flexWrap: "nowrap", padding: "10px" }}
-      paddingRight={mobile ? 0 : 4}
+      sx={{
+        overflowY: "auto",
+        flexWrap: "nowrap",
+        padding: "10px",
+        width: "auto",
+      }}
     >
       <Stack justifyContent="flex-start" alignItems="flex-start" spacing={2}>
         <img

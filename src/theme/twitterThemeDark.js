@@ -28,6 +28,11 @@ export const TwitterThemeDark = createTheme({
     like: "rgba(249, 24, 128)",
     divider: "#2F3336",
   },
+  breakpoints: {
+    values: {
+      lg: "1350px",
+    },
+  },
   typography: {
     fontFamily: "-apple-system, Roboto, sans-serif",
     caption: {
