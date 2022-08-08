@@ -1,42 +1,84 @@
 import { IconButton, Typography, Box } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import { ReplyIcon, RetweetIcon, LikeIcon, ShareIcon } from "../icons/icons";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ActiveUserContext } from "../../context/ActiveUserProvider";
 
 export default function TweetActions(props) {
-  const { id } = props;
-
-  const tweet = JSON.parse(localStorage.getItem(`tweet-${id}`));
-
-  const { liked, retweeted, like_count, reply_count, retweet_count } = tweet;
+  let activeUser = useContext(ActiveUserContext);
+  const { id, tweet } = props;
+  const { like_count, reply_count, retweet_count } = tweet;
 
   const [likeCountState, setLikeCountState] = useState(like_count);
   const [replyCountState, setReplyCountState] = useState(reply_count);
   const [retweetCountState, setRetweetCountState] = useState(retweet_count);
 
-  const [likeState, setLikeState] = useState(liked);
-  const [retweetState, setRetweetState] = useState(retweeted);
+  const [likeState, setLikeState] = useState(
+    activeUser.retweets[0].split(",").length < 1
+      ? false
+      : activeUser.likes[0].split(",").includes(id)
+  );
+  const [retweetState, setRetweetState] = useState(
+    activeUser.retweets[0].split(",").length < 1
+      ? false
+      : activeUser.retweets[0].split(",").includes(id)
+  );
+
+  async function GlobalActions(action) {
+    try {
+      const response = await fetch("http://localhost:4000/tweet/" + id, {
+        method: "PUT",
+        body: JSON.stringify(action),
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  async function IndividualActions(id, retweeted) {
+    try {
+      const response = await fetch(
+        "http://localhost:4000/user/" + activeUser.id,
+        {
+          method: "PUT",
+          body: retweeted
+            ? JSON.stringify({
+                retweet: id,
+              })
+            : JSON.stringify({ like: id }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
   const handleLike = () => {
-    tweet.liked = !liked;
-    setLikeState(!liked);
-    setLikeCountState(liked ? like_count - 1 : like_count + 1);
-    tweet.like_count = liked ? like_count - 1 : like_count + 1;
-    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
+    setLikeCountState(likeState ? like_count - 1 : like_count + 1);
+    tweet.like_count = likeState ? like_count - 1 : like_count + 1;
+    GlobalActions(tweet);
+    setLikeState(!likeState);
+    IndividualActions(id, false);
   };
 
   const handleRetweet = () => {
-    tweet.retweeted = !retweeted;
-    setRetweetState(!retweeted);
-    setRetweetCountState(retweeted ? retweet_count - 1 : retweet_count + 1);
-    tweet.retweet_count = retweeted ? retweet_count - 1 : retweet_count + 1;
-    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
+    console.log(retweetState);
+    setRetweetCountState(retweetState ? retweet_count - 1 : retweet_count + 1);
+    tweet.retweet_count = retweetState ? retweet_count - 1 : retweet_count + 1;
+    GlobalActions(tweet);
+
+    setRetweetState(!retweetState);
+    IndividualActions(id, true);
   };
 
   const handleReply = () => {
     setReplyCountState(reply_count + 1);
     tweet.reply_count = reply_count + 1;
-    localStorage.setItem(`tweet-${id}`, JSON.stringify(tweet));
+    GlobalActions(tweet);
   };
 
   return (

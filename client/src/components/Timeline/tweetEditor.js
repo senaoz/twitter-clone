@@ -3,12 +3,28 @@ import { nanoid } from "nanoid";
 import GifIcon from "../icons/gif.svg";
 import QuestionIcon from "../icons/question.svg";
 import EmojiIcon from "../icons/emoji.svg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { MediaIcon } from "../icons/icons";
+import { ActiveUserContext } from "../../context/ActiveUserProvider";
 
-export default function TweetEditor(props) {
+export default function TweetEditor() {
+  const activeUser = useContext(ActiveUserContext);
+  const activeUserID = activeUser.id;
+
+  async function PostTweet(body) {
+    try {
+      const response = await fetch("http://localhost:4000/tweet/", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   const [text, setText] = useState("");
-  const theLength = props.length;
   const [fileDataURL, setFileDataURL] = useState(null);
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);
@@ -54,32 +70,15 @@ export default function TweetEditor(props) {
     if (text.length > 0) {
       const id = nanoid();
 
-      localStorage.setItem(
-        `tweet-${id}`,
-        JSON.stringify({
-          str_id: `${id}`,
-          created_at: new Date().toUTCString(),
-          text: `${text}`,
-          user: {
-            user_id: 100001,
-            name: "My Account",
-            profile_image_url:
-              "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png",
-            username: "demoAccount",
-          },
-          reply_count: 0,
-          retweet_count: 0,
-          like_count: 0,
-          retweeted: false,
-          liked: false,
-          entities: {
-            hashtags: [],
-            user_mentions: [],
-            urls: [],
-            media: [fileDataURL],
-          },
-        })
-      );
+      PostTweet({
+        text: text,
+        user_id: activeUserID,
+        hashtags: [],
+        media: [file ? fileDataURL : null],
+        str_id: id,
+        user_mentions: [],
+        urls: [],
+      });
 
       setText("");
       setFile(null);
@@ -99,9 +98,7 @@ export default function TweetEditor(props) {
       >
         <Avatar
           sx={{ marginRight: 1, width: "48px", height: "48px" }}
-          src={
-            "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png"
-          }
+          src={activeUser.profile_image}
         />
 
         <form

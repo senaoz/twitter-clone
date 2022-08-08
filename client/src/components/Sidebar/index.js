@@ -1,4 +1,4 @@
-import { Grid, Button, Stack, SvgIcon, useMediaQuery } from "@mui/material";
+import { Grid, Button, Stack, useMediaQuery } from "@mui/material";
 import twitter from "../icons/twitter.svg";
 
 import { useState } from "react";
@@ -7,7 +7,6 @@ import tweet from "../icons/tweet.svg";
 
 export default function Sidebar() {
   const mobile = useMediaQuery("(max-width:1350px)");
-
   const [selected, setSelected] = useState("Home");
 
   const Navigation = [

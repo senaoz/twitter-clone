@@ -21,8 +21,19 @@ export default function TweetEditMenu(props) {
     handleClose();
   };
 
+  async function DeleteTweet(id) {
+    try {
+      const response = await fetch("http://localhost:4000/tweet/" + id, {
+        method: "DELETE",
+      });
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   const handleDelete = () => {
-    localStorage.removeItem(`tweet-${str_id}`);
+    DeleteTweet(str_id);
     handleClose();
     window.location.reload();
   };

@@ -1,8 +1,15 @@
 import { Avatar, Button, Stack, Typography } from "@mui/material";
 import arrowBottom from "../icons/arrow-bottom.svg";
+import { useContext } from "react";
+import { ActiveUserContext } from "../../context/ActiveUserProvider";
 
 export default function ProfileSettings(props) {
   let mobile = props.mobile;
+  const activeUser = useContext(ActiveUserContext);
+  console.log(activeUser);
+
+  const { display_name, username, profile_image } = activeUser;
+
   return (
     <Button
       variant="text"
@@ -17,15 +24,11 @@ export default function ProfileSettings(props) {
       endIcon={mobile ? null : <img src={arrowBottom} alt={"arrowBottom"} />}
     >
       <Stack direction="row" alignItems="center">
-        <Avatar
-          src={
-            "https://images.ctfassets.net/spoqsaf9291f/3lEd6s7d8pem7vwS6njpqh/e5e837543327c4f20cdc8da6427e6025/Notion_Apps_-_Chapter_Hero.png"
-          }
-        />
+        <Avatar src={profile_image} />
         {mobile ? null : (
           <Stack marginX={1}>
-            <Typography variant="body1">My Account</Typography>
-            <Typography variant="body2">@demoAccount</Typography>
+            <Typography variant="body1">{display_name}</Typography>
+            <Typography variant="body2">@{username}</Typography>
           </Stack>
         )}
       </Stack>

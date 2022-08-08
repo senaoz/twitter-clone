@@ -5,7 +5,7 @@ export default function sampleTweets() {
     {
       str_id: "1000",
       created_at: utcDate1.toUTCString(),
-      text: "1- Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps://t.co/XweGngmxlP",
+      text: "1- Today we\u2019re sharing our vision for the future of the Twitter API platform!",
       user: {
         user_id: 2244994945,
         name: "Twitter Dev",

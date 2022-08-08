@@ -2,21 +2,35 @@ import { AppBar, Stack, Typography, Box } from "@mui/material";
 import timelineProp from "../icons/timeline-prop.svg";
 import Tweet from "./tweet";
 import TweetEditor from "./tweetEditor";
+import { useState, useEffect } from "react";
 
 export default function Timeline() {
-  const tweetList = [];
+  const [tweetList, setTweetList] = useState([]);
 
-  for (var key in localStorage) {
-    if (key.includes("tweet")) {
-      tweetList.push(JSON.parse(localStorage.getItem(key)));
+  async function FetchTweets() {
+    try {
+      const response = await fetch("http://localhost:4000/tweets")
+        .then((response) => {
+          if (response.ok && response.status === 200) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          setTweetList(data);
+        });
+    } catch (err) {
+      console.error(err.message);
     }
   }
 
-  console.log(tweetList);
+  useEffect(() => {
+    FetchTweets();
+  }, []);
 
   return (
     <Box
       maxWidth={"600px"}
+      width={"100%"}
       borderRight={1}
       borderLeft={1}
       borderColor={"divider"}
@@ -39,12 +53,9 @@ export default function Timeline() {
       <Stack sx={{ overflowY: "auto", flexWrap: "nowrap" }}>
         <TweetEditor length={tweetList.length} />
       </Stack>
-      {tweetList
-        .slice(0)
-        .reverse()
-        .map((tweet, index) => (
-          <Tweet key={index} tweet={tweet} />
-        ))}
+      {tweetList.map((tweet, index) => (
+        <Tweet tweet={tweet} key={index} />
+      ))}
     </Box>
   );
 }
