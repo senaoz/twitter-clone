@@ -36,5 +36,3 @@ For get a users' retweets&likes by id
 
 For update a users' retweets&likes by id
 - **PUT /user/{id}**
-
-
