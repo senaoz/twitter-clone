@@ -13,16 +13,16 @@ For creating a tweet
 - **POST /tweet** 
 
 For get a tweet by id
-- **GET /tweet/:id**
+- **GET /tweet/{id}**
 
 For update a tweet by id
-- **PUT /tweet/:id**
+- **PUT /tweet/{id}**
 
 For get a user by id
-- **GET /user/:id**
+- **GET /user/{id}**
 
 For create a new user
-- **POST /user*
+- **POST /user**
 
 For update a user by id
-- **PUT /user/:id**
+- **PUT /user/{id}**
