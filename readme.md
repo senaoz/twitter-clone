@@ -42,7 +42,7 @@ GET /user/{id}
 
 For get a user's password and email by id
 ```javascript
-GET /user/{id}/pass
+GET /user/{id}/authentication
 ```
 
 For get a user's public information (display name, username, created time, profile image, likes, retweets) by id
