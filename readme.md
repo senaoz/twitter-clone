@@ -35,17 +35,32 @@ For get a user by id
 GET /user/{id}
 ```
 
+For get a user by id
+```javascript
+GET /user/{id}
+```
+
+For get a user's password and email by id
+```javascript
+GET /user/{id}/pass
+```
+
+For get a user's public information (display name, username, created time, profile image, likes, retweets) by id
+```javascript
+GET /user/{id}/public
+```
+
 For create a user
 ```javascript
 POST /user
 ```
 
-For get a users' retweets&likes by id
+For get a user's retweets&likes by id
 ```javascript
 GET /user/{id}/actions
 ```
 
-For update a users' retweets&likes by id
+For update a user's retweets&likes by id
 ```javascript
 PUT /user/{id}
 ```
