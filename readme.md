@@ -55,6 +55,11 @@ For create a user
 POST /user
 ```
 
+For get a user by id
+```javascript
+GET /user/{id}
+```
+
 For get a user's retweets&likes by id
 ```javascript
 GET /user/{id}/actions
