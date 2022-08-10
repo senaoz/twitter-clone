@@ -9,30 +9,43 @@ User will be able to,
 ## Tweets
 
 For get all tweets from most recent to oldest
-- **GET /tweets**
+```javascript
+GET /tweets
+```
 
 For creating a tweet
-- **POST /tweet** 
+```javascript
+POST /tweet
+```
 
 For get a tweet by id
-- **GET /tweet/{id}**
+```javascript
+GET /tweet/{id}
+```
+
+For update a tweet by id
+```javascript
+PUT /tweet/{id}
+```
 
 ## User
 
-For update a tweet by id
-- **PUT /tweet/{id}**
-
 For get a user by id
-- **GET /user/{id}**
+```javascript
+GET /user/{id}
+```
 
-
-For create a new user
-- **POST /user**
-
+For create a user
+```javascript
+POST /user
+```
 
 For get a users' retweets&likes by id
-- **GET /user/{id}/actions**
-
+```javascript
+GET /user/{id}/actions
+```
 
 For update a users' retweets&likes by id
-- **PUT /user/{id}**
+```javascript
+PUT /user/{id}
+```
