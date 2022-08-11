@@ -9,7 +9,7 @@ export default function Timeline() {
 
   async function FetchTweets() {
     try {
-      const response = await fetch(process.env.DB_HOST + "/tweets")
+      const response = await fetch("http://localhost:3001/tweets")
         .then((response) => {
           if (response.ok && response.status === 200) {
             return response.json();

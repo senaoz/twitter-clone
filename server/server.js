@@ -1,19 +1,21 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000
-const path = require('path')
-
+const port = 4000;
 const pool = require("./db");
 const cors = require("cors");
 var bodyParser = require("body-parser");
 app.use(bodyParser.json({ limit: "1000mb" }));
 app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
 
+app.get("/", (req, res) => {
+  res.status(200);
+  res.json({ message: "Hello World!" });
+});
+
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname + "public")))
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
@@ -30,7 +32,7 @@ app.post("/user", async (req, res) => {
   }
 });
 
-//update a user by id
+//update a user
 app.put("/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -63,6 +65,9 @@ app.put("/user/:id", async (req, res) => {
       }
     }
 
+    console.log("likesArray", likesArray);
+    console.log("retweetsArray", retweetsArray);
+
     const queryText = `UPDATE "Users" SET likes = ARRAY['${likesArray}'], retweets=ARRAY['${retweetsArray}'] WHERE id=${id}`;
 
     const { rows } = await pool.query(queryText);
@@ -84,23 +89,21 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
-//get a user actions by id
-app.get("/user/:id/actions", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const queryText = `SELECT retweets, likes FROM "Users" WHERE id = '${id}'`;
-    const { rows } = await pool.query(queryText);
-    res.json(rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 // create a tweet
 app.post("/tweet", async (req, res) => {
   try {
-    const { str_id, text, user_id, hashtags, user_mentions, urls, media } =
-      req.body;
+    const {
+      str_id,
+      text,
+      user_id,
+      reply_count,
+      retweet_count,
+      like_count,
+      hashtags,
+      user_mentions,
+      urls,
+      media,
+    } = req.body;
 
     const queryText = `INSERT INTO "Tweets"(str_id, text, user_id,  hashtags,user_mentions, urls,media ) 
                         VALUES('${str_id}', '${text}', ${user_id}, ARRAY['${hashtags}'],ARRAY['${user_mentions}'],ARRAY['${urls}'],ARRAY ['${media}'] )

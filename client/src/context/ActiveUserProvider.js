@@ -14,7 +14,7 @@ export const ActiveUserProvider = ({ children }) => {
 
   async function FetchUser(user_id) {
     try {
-      await fetch(process.env.DB_HOST + "/user/" + user_id)
+      await fetch("http://localhost:3001/user/" + user_id)
         .then((response) => {
           if (response.ok && response.status === 200) {
             return response.json();

@@ -6,7 +6,6 @@ import { ActiveUserContext } from "../../context/ActiveUserProvider";
 export default function ProfileSettings(props) {
   let mobile = props.mobile;
   const activeUser = useContext(ActiveUserContext);
-  console.log(activeUser);
 
   const { display_name, username, profile_image } = activeUser;
 
