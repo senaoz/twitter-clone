@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200..900");
+
+body {
+  margin: 0px ;
+  font-family: -apple-system, "Roboto", "Oxygen",  "Ubuntu", "Cantarell",
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  fill: #ffffff;
+}
+
+
+.menu-icons:hover {
+  color: #1DA1F2;
+}
+
+.menu-icons:hover svg {
+  fill: #1DA1F2;
+}
+
+.menu-icons span {
+  padding-left: 4px;
+}
+
+.menu-icons:hover button {
+  background: rgba(29,161,242,0.2);
+}
+
+.retweet:hover  {
+  color: #00BA7CFF;
+}
+
+.retweet:hover  svg {
+  fill: #00BA7CFF;
+}
+
+.retweet:hover button {
+  background: rgba(0, 186, 124, 0.2);
+}
+
+.like:hover  {
+  color: rgba(249, 24, 128);
+}
+
+.like:hover  svg {
+  fill: rgba(249, 24, 128);
+}
+
+.like:hover button {
+  background: rgba(249, 24, 128, 0.2);
+}
+
+.tweet-image-preview {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  border-radius: 10px;
+    }
+
+
+.tweet-text-field {
+  width: 100%;
+  background: transparent;
+  border: none !important;
+  resize: none;
+  font-family: "Roboto", "Oxygen", -apple-system, "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  outline: none;
+  font-weight: 500;
+  font-size: 19px;
+  color: #FFFFFF;
+  margin: 0px;
+}
+
+
+.search-box {
+  width: 100%;
+  display: flex;
+  background: #15181C;
+  padding: 15px;
+  border-radius: 50px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+}
+
+.search-box input{
+  width: 100%;
+  color: white;
+  margin: 0px 10px;
+  background: transparent;
+  border: none;
+}
+
+
+textarea, textarea:focus, input:focus{
+  outline: none !important;
+}
+
+a {
+  text-decoration: none;
+}
