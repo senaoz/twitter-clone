@@ -1,21 +1,19 @@
 const express = require("express");
 const app = express();
-const port = "3000";
+const PORT = process.env.PORT || 3000
+const path = require('path')
+
 const pool = require("./db");
 const cors = require("cors");
 var bodyParser = require("body-parser");
 app.use(bodyParser.json({ limit: "1000mb" }));
 app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
 
-app.get("/", (req, res) => {
-  res.status(200);
-  res.json({ message: "Hello World!" });
-});
-
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname + "public")))
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
