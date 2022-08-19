@@ -7,7 +7,7 @@
 - PostgreSQL
 
 User will be able to,
-- Tweeting (can write 240 characters and upload images),
+- Tweeting (can write and upload images),
 - Liking a tweet,
 - Retweet a tweet,
 - Deleting your own tweet.
