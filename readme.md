@@ -1,3 +1,10 @@
+# Twitter Web Clone
+
+### Built with
+- ReactJS
+- Material UI
+- NodeJS
+
 User will be able to,
 - Tweeting (can write 240 characters and upload images),
 - Liking a tweet,
