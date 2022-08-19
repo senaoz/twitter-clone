@@ -4,6 +4,7 @@
 - ReactJS
 - Material UI
 - NodeJS
+- PostgreSQL
 
 User will be able to,
 - Tweeting (can write 240 characters and upload images),
