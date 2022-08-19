@@ -12,7 +12,7 @@ User will be able to,
 - Retweet a tweet,
 - Deleting your own tweet.
 
-<img width="70%" alt="entity relationship diagram" src="https://user-images.githubusercontent.com/66164676/183708486-fbdac543-701d-4ac1-87ad-55f6a4a44303.png">
+<img alt="entity relationship diagram" src="https://user-images.githubusercontent.com/66164676/183708486-fbdac543-701d-4ac1-87ad-55f6a4a44303.png">
 
 ## Tweets
 
