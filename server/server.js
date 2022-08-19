@@ -68,8 +68,7 @@ app.put("/user/:id", async (req, res) => {
     console.log("likesArray", likesArray);
     console.log("retweetsArray", retweetsArray);
 
-    const queryText = `UPDATE "Users" SET likes = ARRAY['${likesArray}'], retweets=ARRAY['${retweetsArray}'] WHERE id=${id}`;
-
+    const queryText = `UPDATE "Likes" SET likes = ARRAY['${likesArray}'], retweets=ARRAY['${retweetsArray}'] WHERE id=${id}`;
     const { rows } = await pool.query(queryText);
     res.json(rows[0]);
   } catch (err) {
@@ -96,9 +95,6 @@ app.post("/tweet", async (req, res) => {
       str_id,
       text,
       user_id,
-      reply_count,
-      retweet_count,
-      like_count,
       hashtags,
       user_mentions,
       urls,
